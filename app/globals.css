@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
+/* Layout: producto utilitario — columnas angostas, tarjetas solo donde hay acción, acento azul tinta para lo que se toca */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --ink: #141820;
+  --ink-2: #545c6b;
+  --line: #dfe3ea;
+  --accent: #2f55d4;
+  --accent-ink: #ffffff;
+  --ok: #16794a;
+  --warn: #9a6200;
+  --bad: #b42332;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101318; --surface: #181c23; --ink: #eef0f4; --ink-2: #a4acba; --line: #2b313c;
+    --accent: #7d9bff; --accent-ink: #0b1230; --ok: #4fc68b; --warn: #e2a84a; --bad: #f2737f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101318; --surface: #181c23; --ink: #eef0f4; --ink-2: #a4acba; --line: #2b313c;
+  --accent: #7d9bff; --accent-ink: #0b1230; --ok: #4fc68b; --warn: #e2a84a; --bad: #f2737f; color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-sans: var(--font-cuerpo);
+  --font-display: var(--font-titulo);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
 }
+
+h1, h2 { text-wrap: balance; }
+.tabular { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
